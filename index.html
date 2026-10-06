@@ -14,7 +14,7 @@
 </head>
 <body>
 <style>
-/* Layout: cinematic dark, photo-led. Big name, a living deck of photos, a pinned horizontal city rotation, two counter-rotating photo marquees, logo timeline with a cursor-following preview. */
+/* Layout: cinematic dark, photo-led. Big name, a living deck of photos, a pinned horizontal city rotation, two counter-rotating photo marquees, logo timeline. */
 :root{
   --bg:#0c0b0a;--bg-2:#151311;--bg-3:#1d1a17;
   --ink:#ede7db;--ink-2:#aaa297;--ink-3:#6e675e;
@@ -223,6 +223,13 @@ section{position:relative}
 .collage figure:hover img{transform:scale(1.05)}
 .collage figcaption{position:absolute;left:12px;bottom:10px;right:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-shadow:0 1px 6px rgba(0,0,0,.9)}
 @media (max-width:900px){.minerva{grid-template-columns:1fr}.collage{margin-top:40px}}
+@media (max-width:760px){
+  .facts li{grid-template-columns:minmax(0,64px) minmax(0,1fr);gap:14px;padding:14px 0;align-items:start}
+  .facts b{font-size:26px;padding-top:4px}
+  .facts span{font-size:14.5px}
+  .minerva h2{font-size:clamp(30px,8vw,40px)}
+  .minerva .lead{font-size:15.5px}
+}
 
 /* story */
 .story{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);position:relative}
@@ -240,18 +247,9 @@ section{position:relative}
 .story .tx span{display:block;color:var(--ink-2);font-size:15px;line-height:1.65;margin-top:6px;max-width:52em}
 .story .tx strong{color:var(--ink);font-weight:400}
 .story li.current .year{color:var(--accent-2)}
-.follow{position:fixed;left:0;top:0;width:240px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;pointer-events:none;z-index:45;opacity:0;transform:translate(-50%,-50%) scale(.9) rotate(-4deg);box-shadow:0 30px 70px rgba(0,0,0,.6);background:var(--bg-2);will-change:transform}
-.follow img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
-.follow img.show{opacity:1}
-.follow .lgcard{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(160deg,var(--bg-3),var(--bg));opacity:0;transition:opacity .3s;padding:24px}
-.follow .lgcard.show{opacity:1}
-.follow .lgcard img{position:static;width:auto;height:48px;max-width:180px;opacity:1;filter:none}
-.follow .lgcard .wm{font-family:var(--display);font-size:30px}
-.follow .lgcard .wm b{font-weight:400}
 @media (max-width:760px){
   .story li{grid-template-columns:1fr;gap:10px;padding:24px 0}
   .story li:hover{padding-left:0}
-  .follow{display:none}
 }
 
 /* videos */
@@ -446,7 +444,7 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
 
       <div class="notes">
         <article class="note" data-rise>
-          <div class="im"><img src="assets/life/jerusalem-dome.jpg" alt="The Western Wall plaza with the Dome of the Rock behind it, Jerusalem"></div>
+          <div class="im"><img src="assets/life/israel-diptych.jpg" alt="Dexter with his hand on the Western Wall, and the Dome of the Rock above the Old City of Jerusalem"></div>
           <div class="tx"><div class="where"><span class="flag">🇮🇱</span>Israel and the West Bank, May 2025</div><h3>The trip I still think about the most</h3><p>I was in a meeting at a café in Tel Aviv when the rocket sirens went off and the barista pulled me into the basement. Two days later, same thing in Jerusalem. Then I crossed into the West Bank. The conflict isn't something you read about there. It's on every wall, every checkpoint, every face. I came back shaken, and I still don't have a clean take on it. I don't think I'm supposed to.</p></div>
         </article>
         <article class="note" data-rise>
@@ -493,35 +491,35 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
     <div class="wrap sec">
       <div class="sec-head">
         <h2 data-split>How did <em>I get here?</em></h2>
-        <p>Before school I spent seven years building things inside companies and then on my own. Most of it worked. One thing didn't. <strong>Hover each line to see it.</strong></p>
+        <p>Before school I spent seven years building things inside companies and then on my own. Most of it worked. One thing didn't.</p>
       </div>
       <ol class="story" id="storyList">
-        <li data-img="assets/build/blockchain-summit-2018.jpg">
+        <li>
           <div class="year">2018</div>
           <div class="lg"><img src="assets/logos/huya-w.png" alt="HUYA"></div>
           <div class="tx"><b>HUYA. League of Legends esports and live streaming.</b><span>My first job out of school. Esports was exploding in China and I was in the middle of it. Then JOYY, the US listed parent company, took me in as a management trainee.</span></div>
         </li>
-        <li data-logo="1">
+        <li>
           <div class="year">2018 to 2020</div>
           <div class="lg"><img src="assets/logos/joyy-w.png" alt="JOYY"></div>
           <div class="tx"><b>Product manager, then product director.</b><span>My team built gaming utility apps for Android, Lulubox and Flashdog. They grew to <strong>30M+ users</strong>, with <strong>1.5M+ people</strong> opening them every day. I got promoted after a year. Same products, same scope. The title just caught up.</span></div>
         </li>
-        <li data-logo="1">
+        <li>
           <div class="year">2020 to 2022</div>
           <div class="lg"><img src="assets/logos/shopline-w.png" alt="SHOPLINE"></div>
           <div class="tx"><b>SHOPLINE. Three jobs in two years.</b><span>After JOYY acquired SHOPLINE, I was sent over to build new business lines. First, direct access to China's apparel supply chain for US sellers, <strong>100+ clients and $2.3M a year</strong>. Then China marketing. Then I moved to Singapore to launch social and livestream commerce, <strong>zero to 100+ clients and $15M+ annual GMV</strong> in nine months.</span></div>
         </li>
-        <li data-img="assets/build/uocan-prototype.jpg">
+        <li>
           <div class="year">2023 to 2025</div>
           <div class="lg"><img src="assets/logos/uocan-w.png" alt="Uocan"></div>
           <div class="tx"><b>Uocan. Co-founder, San Francisco Bay Area.</b><span>We designed a smart trash can from scratch. Our own patent, an <strong>iF Design Award</strong>, <strong>10,000+ units sold</strong>, about $450K in sales. Then supply chain cash pressure got too heavy and we shut it down. It hurt. It also taught me more than anything that worked.</span></div>
         </li>
-        <li data-img="assets/life/sf-first-days.jpg">
+        <li>
           <div class="year">2023</div>
           <div class="lg"><img src="assets/logos/minerva-w.png" alt="Minerva University"></div>
           <div class="tx"><b>Went back to school. Minerva University, class of 2027.</b><span>Started in San Francisco while still running Uocan. Business major, strategic finance. Seven cities, four years.</span></div>
         </li>
-        <li class="current" data-img="assets/build/meet-taipei-pitch-2.jpg">
+        <li class="current">
           <div class="year">2025 to now</div>
           <div class="lg"><img src="assets/logos/feinnr-w.png" alt="FEiNNR AI"></div>
           <div class="tx"><b>FEiNNR AI. Founder and CEO.</b><span>AI native marketing for global brands. Clients include Insta360, Bambu Lab and others. Also where the YouTube channel comes from. I know, student and founder is a weird combination. That's exactly what the channel is about.</span></div>
@@ -529,7 +527,6 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
       </ol>
     </div>
   </section>
-  <div class="follow" id="follow" aria-hidden="true"></div>
 
   <div class="wrap"><div class="rule"></div></div>
 
@@ -585,7 +582,7 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
   var hasGsap = typeof gsap !== 'undefined';
 
   /* marquee rows */
-  var A=[['budapest-parliament','🇭🇺','Budapest'],['jerusalem-dome','🇮🇱','Jerusalem'],['istanbul-mosque','🇹🇷','Istanbul'],['seoul-pagoda','🇰🇷','Seoul'],['bariloche-lake','🇦🇷','Bariloche'],['lamma-island','🇭🇰','Hong Kong'],['philippines-river','🇵🇭','Bohol'],['sf-palace','🇺🇸','San Francisco'],['taipei-cks','🇹🇼','Taipei'],['harbin-confucius','🇨🇳','Harbin'],['berlin-tv-tower','🇩🇪','Berlin'],['jaffa','🇮🇱','Jaffa'],['seoul-snow','🇰🇷','Seoul'],['ba-rainbow','🇦🇷','Buenos Aires'],['jerusalem-market','🇮🇱','Old City, Jerusalem'],['budapest-fountain','🇭🇺','Budapest'],['taipei-cks-statue','🇹🇼','Taipei'],['bariloche-carriage','🇦🇷','Bariloche'],['seoul-statue','🇰🇷','Gwanghwamun'],['berlin-street','🇩🇪','Berlin']];
+  var A=[['budapest-parliament','🇭🇺','Budapest'],['jerusalem-dome','🇮🇱','Jerusalem'],['istanbul-mosque','🇹🇷','Istanbul'],['seoul-pagoda','🇰🇷','Seoul'],['bariloche-lake','🇦🇷','Bariloche'],['lamma-island','🇭🇰','Hong Kong'],['philippines-river','🇵🇭','Bohol'],['sf-palace','🇺🇸','San Francisco'],['taipei-cks','🇹🇼','Taipei'],['harbin-confucius','🇨🇳','Harbin'],['berlin-tv-tower','🇩🇪','Berlin'],['jaffa','🇮🇱','Jaffa'],['seoul-snow','🇰🇷','Seoul'],['ba-rainbow','🇦🇷','Buenos Aires'],['western-wall-me','🇮🇱','Western Wall'],['jerusalem-market','🇮🇱','Old City, Jerusalem'],['budapest-fountain','🇭🇺','Budapest'],['taipei-cks-statue','🇹🇼','Taipei'],['bariloche-carriage','🇦🇷','Bariloche'],['seoul-statue','🇰🇷','Gwanghwamun'],['berlin-street','🇩🇪','Berlin']];
   var B=[['budapest-bridge','🇭🇺','Budapest'],['tel-aviv-beach','🇮🇱','Tel Aviv'],['istanbul-waterfront','🇹🇷','Istanbul'],['seoul-han-sunset','🇰🇷','Han River'],['bariloche-sunset','🇦🇷','Patagonia'],['hk-wings','🇭🇰','Hong Kong'],['philippines-atv','🇵🇭','Philippines'],['beach-sunset-me','🇺🇸','Hawaii'],['jiufen','🇹🇼','Jiufen'],['harbin-food','🇨🇳','Harbin'],['camino-7-lagos','🇦🇷','Camino de los 7 Lagos'],['busan-street','🇰🇷','Busan'],['sf-coit','🇺🇸','San Francisco'],['budapest-basilica','🇭🇺','Budapest'],['jerusalem-gate','🇮🇱','Jerusalem'],['tel-aviv-mural','🇮🇱','Tel Aviv'],['hawaii-luau','🇺🇸','Hawaii'],['patagonia-sign','🇦🇷','Patagonia'],['seoul-namsan','🇰🇷','Seoul'],['ba-concert','🇦🇷','Buenos Aires']];
   function fill(id,list){var el=document.getElementById(id);if(!el)return;var h='';list.concat(list).forEach(function(x){h+='<div class="ph"><img loading="lazy" src="assets/life/'+x[0]+'.jpg" alt="'+x[2]+'"><div class="c"><span class="flag">'+x[1]+'</span>'+x[2]+'</div></div>'});el.innerHTML=h}
   fill('rowA',A);fill('rowB',B);
@@ -635,17 +632,6 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
       if(hasGsap){gsap.to(deck,{rotateY:x*10,rotateX:-y*8,duration:.8,ease:'power2.out'})}
     });
     hero.addEventListener('mouseleave',function(){ if(hasGsap) gsap.to(deck,{rotateY:0,rotateX:0,duration:1}); });
-  }
-
-  /* cursor follower on the timeline */
-  var follow=document.getElementById('follow'), list=document.getElementById('storyList');
-  if(follow&&list&&window.matchMedia('(pointer:fine)').matches){
-    var imgs={}; list.querySelectorAll('li').forEach(function(li,i){var s=li.dataset.img; if(s&&!imgs[s]){var im=document.createElement('img'); im.src=s; im.alt=''; follow.appendChild(im); imgs[s]=im;} else if(!s){var k='logo'+i; li.dataset.img=k; var d=document.createElement('div'); d.className='lgcard'; d.innerHTML=li.querySelector('.lg').innerHTML; follow.appendChild(d); imgs[k]=d;}});
-    var tx=0,ty=0,cx=0,cy=0,vis=false;
-    document.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY});
-    list.addEventListener('mouseover',function(e){var li=e.target.closest('li'); if(!li) return; var s=li.dataset.img; Object.keys(imgs).forEach(function(k){imgs[k].classList.toggle('show',k===s)}); vis=true;});
-    list.addEventListener('mouseleave',function(){vis=false});
-    (function loop(){ cx+=(tx-cx)*.12; cy+=(ty-cy)*.12; follow.style.transform='translate('+(cx+28)+'px,'+(cy-120)+'px) rotate('+((tx-cx)*.05)+'deg) scale('+(vis?1:.9)+')'; follow.style.opacity=vis?1:0; requestAnimationFrame(loop) })();
   }
 
   if(!hasGsap||reduce) return;
