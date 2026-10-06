@@ -357,8 +357,8 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
         </div>
         <div class="stats" data-rise>
           <div class="stat"><b><span data-count="30">30</span><sup>+</sup></b><span>countries</span></div>
-          <div class="stat"><b><span data-count="7">7</span></b><span>cities in 4 years</span></div>
-          <div class="stat"><b><span data-count="3">3</span></b><span>suitcases, total</span></div>
+          <div class="stat"><b><span data-count="2">2</span></b><span>companies founded</span></div>
+          <div class="stat"><b><span data-count="30">30</span>M<sup>+</sup></b><span>users on apps I ran</span></div>
           <div class="stat"><b>'27</b><span>Minerva class of</span></div>
         </div>
       </div>
@@ -695,6 +695,7 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
 
   if(!hasGsap||reduce) return;
   gsap.registerPlugin(ScrollTrigger);
+  gsap.ticker.lagSmoothing(0); /* keep entrance animations honest when the tab opens in the background */
 
   /* split headings */
   document.querySelectorAll('[data-split]').forEach(function(h){
