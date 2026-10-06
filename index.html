@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dexter Fang. Minerva University student, founder of FEiNNR AI, and a YouTuber showing what it looks like to build businesses while still in school.">
+<meta property="og:title" content="Dexter Fang">
+<meta property="og:description" content="Building businesses, thinking out loud, living in between.">
+<meta property="og:image" content="assets/dexter-hero.jpg">
+<title>Dexter Fang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
+</head>
+<body>
+<style>
+/* Layout: cinematic dark, photo-led. Big name, a living deck of photos, a pinned horizontal city rotation, two counter-rotating photo marquees, logo timeline with a cursor-following preview. */
+:root{
+  --bg:#0c0b0a;--bg-2:#151311;--bg-3:#1d1a17;
+  --ink:#ede7db;--ink-2:#aaa297;--ink-3:#6e675e;
+  --line:rgba(237,231,219,.12);--line-2:rgba(237,231,219,.22);
+  --accent:#c0361f;--accent-2:#e04a30;--accent-soft:rgba(192,54,31,.2);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Geist",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gutter:clamp(20px,5vw,80px);--max:1320px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-2);outline-offset:4px}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:300;margin:0;text-wrap:balance}
+p{margin:0}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.06;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent-2);flex:none}
+.flag{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-style:normal}
+
+/* nav */
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.on{background:rgba(12,11,10,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-family:var(--display);font-size:21px;letter-spacing:.01em;white-space:nowrap}
+.brand i{font-style:italic;color:var(--ink-2)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:24px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.nav ul a{position:relative;padding:6px 0;transition:color .25s}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent-2);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.nav ul a:hover{color:var(--ink)}.nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.now-in{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.now-in .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 0 rgba(224,74,48,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,74,48,.55)}70%{box-shadow:0 0 0 9px rgba(224,74,48,0)}100%{box-shadow:0 0 0 0 rgba(224,74,48,0)}}
+@media (max-width:900px){.nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-top:64px}
+.hero-glow{position:absolute;right:-10%;top:-10%;width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(192,54,31,.17),rgba(192,54,31,0));filter:blur(50px);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:center;min-height:calc(100vh - 64px);padding-block:clamp(40px,6vw,72px)}
+.hero-copy{min-width:0;position:relative;z-index:2}
+.hero h1{font-size:clamp(64px,11vw,150px);line-height:.92;letter-spacing:-.03em;margin-top:22px;font-variation-settings:"opsz" 144}
+.hero h1 em{font-style:italic;position:relative}
+.hero h1 em::after{content:"";position:absolute;left:.02em;right:.04em;bottom:-.04em;height:2px;background:var(--accent-2);transform-origin:left;transform:scaleX(0);animation:underline 1.1s cubic-bezier(.2,.7,.2,1) 1.3s forwards}
+.tagline{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.3vw,27px);color:var(--ink-2);margin-top:26px;line-height:1.35}
+.intro{max-width:33em;margin-top:26px;font-size:clamp(16px,1.2vw,18px);line-height:1.75}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.pill{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line-2);padding:12px 20px;border-radius:999px;color:var(--ink);display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden;transition:border-color .3s,color .3s,transform .3s}
+.pill span{position:relative;z-index:1}
+.pill::before{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.pill:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pill:hover::before{transform:translateY(0)}
+.pill.primary{background:var(--accent);border-color:var(--accent)}
+.pill.primary::before{background:var(--accent-2)}
+.stats{display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,44px);margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+.stat b{display:block;font-family:var(--display);font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat b sup{font-size:.5em;color:var(--accent-2);vertical-align:top;margin-left:2px}
+.stat>span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-top:8px}
+
+.deck{position:relative;aspect-ratio:4/5;max-width:100%;perspective:1400px;min-width:0}
+.deck .card{position:absolute;inset:0;border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);transform-origin:50% 100%;will-change:transform;background:var(--bg-2)}
+.deck .card img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04)}
+.deck .card .cap{position:absolute;left:16px;bottom:14px;right:16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);display:flex;justify-content:space-between;gap:10px;z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.deck .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,10,0) 60%,rgba(12,11,10,.8) 100%)}
+.deck .card:nth-child(1){z-index:5}.deck .card:nth-child(2){z-index:4;transform:rotate(-5deg) translateX(-6%) scale(.96)}
+.deck .card:nth-child(3){z-index:3;transform:rotate(5deg) translateX(6%) scale(.92)}
+.deck .card:nth-child(4){z-index:2;transform:rotate(-9deg) translateX(-10%) scale(.88)}
+.deck .card:nth-child(5){z-index:1;transform:rotate(9deg) translateX(10%) scale(.84)}
+.deck-hint{position:absolute;left:0;right:0;bottom:-34px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+@keyframes underline{to{transform:scaleX(1)}}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:28px}
+  .deck{order:-1;width:min(78vw,380px);max-width:100%;margin:0 auto 54px}
+  .hero h1{margin-top:14px}
+}
+
+/* sections */
+section{position:relative}
+.sec{padding-block:clamp(72px,9vw,130px)}
+.sec-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);margin-bottom:clamp(36px,5vw,72px);align-items:end}
+.sec-head h2{font-size:clamp(40px,6vw,88px);line-height:.98;letter-spacing:-.03em}
+.sec-head h2 em{font-style:italic;color:var(--ink-2)}
+.sec-head p{color:var(--ink-2);max-width:36em;font-size:clamp(16px,1.2vw,18px);line-height:1.75}
+.sec-head p strong{color:var(--ink);font-weight:400}
+.rule{height:1px;background:var(--line)}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:16px}}
+.w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .18em .14em 0;margin:0 -.18em -.14em 0}
+.w.open{overflow:visible}
+.w>span{display:inline-block;will-change:transform}
+
+/* what I do */
+.do{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.do article{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--bg-2);min-width:0;isolation:isolate}
+.do article img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);z-index:0}
+.do article::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,10,.15) 0%,rgba(12,11,10,.1) 40%,rgba(12,11,10,.93) 100%);z-index:1}
+.do article:hover img.bg{transform:scale(1.07)}
+.do .top{position:absolute;left:22px;right:22px;top:20px;z-index:2;display:flex;justify-content:space-between;align-items:center}
+.do .logo{height:26px;width:auto;filter:brightness(0) invert(1);opacity:.95}
+.do .logo.raw{filter:none;height:22px}
+.do .wordmark{font-family:var(--display);font-size:22px;letter-spacing:.02em}
+.do .wordmark b{font-weight:400}
+.do .role{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(12,11,10,.55);backdrop-filter:blur(8px);padding:7px 11px;border-radius:999px;border:1px solid var(--line)}
+.do .body{position:absolute;left:22px;right:22px;bottom:22px;z-index:2;transform:translateY(10px);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.do article:hover .body{transform:none}
+.do h3{font-size:clamp(28px,2.6vw,36px);letter-spacing:-.015em;line-height:1.08}
+.do h3 span{color:var(--ink-2);font-style:italic}
+.do p{margin-top:12px;color:var(--ink-2);font-size:15px;line-height:1.65;max-width:30em}
+.do p strong{color:var(--ink);font-weight:400}
+.do .more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.do .more i{display:inline-block;width:28px;height:28px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;font-style:normal;transition:background .3s,border-color .3s,transform .3s}
+.do article:hover .more i{background:var(--accent);border-color:var(--accent);transform:rotate(-45deg)}
+@media (max-width:900px){.do{grid-template-columns:1fr}.do article{aspect-ratio:4/5;max-height:560px}}
+.clients{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(22px,4vw,56px);margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.clients .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.clients img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.75;transition:opacity .3s}
+.clients img:hover{opacity:1}
+.clients img.insta{height:24px}
+
+/* how I live: cities */
+.cities-wrap{position:relative;overflow:hidden}
+.cities-track{display:flex;gap:18px;will-change:transform;padding-left:var(--gutter)}
+.city{flex:0 0 clamp(300px,34vw,460px);aspect-ratio:3/4;border-radius:8px;overflow:hidden;position:relative;background:var(--bg-2);isolation:isolate}
+.city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);z-index:0}
+.city:hover img{transform:scale(1.06)}
+.city::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,10,.1) 0%,rgba(12,11,10,0) 35%,rgba(12,11,10,.92) 100%);z-index:1}
+.city .n{position:absolute;left:20px;top:18px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.city .fl{position:absolute;right:18px;top:14px;z-index:2;font-size:28px}
+.city .b{position:absolute;left:20px;right:20px;bottom:20px;z-index:2}
+.city h3{font-size:clamp(30px,3vw,42px);letter-spacing:-.02em;line-height:1.02}
+.city .t{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-top:8px}
+.city p{margin-top:10px;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+.city.next{background:repeating-linear-gradient(135deg,var(--bg-2) 0 10px,var(--bg) 10px 20px);border:1px dashed var(--line-2)}
+.city.next::before{display:none}
+.city.next h3{color:var(--ink-2)}
+.city.next .q{position:absolute;inset:0;display:grid;place-items:center;font-size:150px;opacity:.18;filter:grayscale(1);z-index:0}
+.city-end{flex:0 0 var(--gutter)}
+@media (max-width:900px){
+  .cities-track{overflow-x:auto;scroll-snap-type:x mandatory;padding-right:var(--gutter);padding-bottom:12px;scrollbar-width:none}
+  .cities-track::-webkit-scrollbar{display:none}
+  .city{scroll-snap-align:start;flex-basis:min(78vw,380px)}
+}
+
+/* marquee */
+.marquee{overflow:hidden;margin-top:18px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .row{display:flex;gap:14px;width:max-content;animation:scrollL 70s linear infinite}
+.marquee .row.r{animation-name:scrollR;animation-duration:84s}
+.marquee:hover .row{animation-play-state:paused}
+.ph{position:relative;flex:none;width:clamp(170px,19vw,260px);aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:var(--bg-2)}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.8);transition:filter .5s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.ph:hover img{filter:saturate(1);transform:scale(1.05)}
+.ph .c{position:absolute;left:12px;bottom:10px;right:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-shadow:0 1px 6px rgba(0,0,0,.9);display:flex;gap:8px;align-items:center;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.ph:hover .c{opacity:1;transform:none}
+.ph .c .flag{font-size:15px}
+@keyframes scrollL{to{transform:translateX(-50%)}}
+@keyframes scrollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.flags{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:28px;font-size:26px;line-height:1}
+.flags span{display:inline-block;transition:transform .3s;cursor:default}
+.flags span:hover{transform:translateY(-5px) scale(1.15)}
+
+/* moments */
+.moments{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,16vw,230px);grid-template-areas:"a b c d" "a e e f" "g h h i";gap:12px;margin-top:clamp(40px,5vw,64px)}
+.moments figure{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--bg-2);min-width:0}
+.moments .ma{grid-area:a}.moments .mb{grid-area:b}.moments .mc{grid-area:c}.moments .md{grid-area:d}.moments .me{grid-area:e}.moments .mf{grid-area:f}.moments .mg{grid-area:g}.moments .mh{grid-area:h}.moments .mi{grid-area:i}
+.moments img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 30%);filter:saturate(.82);transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .5s}
+.moments figure:hover img{transform:scale(1.05);filter:saturate(1)}
+.moments figcaption{position:absolute;left:12px;bottom:10px;right:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-shadow:0 1px 6px rgba(0,0,0,.9);display:flex;gap:8px;align-items:center;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.moments figure:hover figcaption{opacity:1;transform:none}
+@media (max-width:760px){.moments{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:40vw;grid-template-areas:"a b" "a c" "d f" "e e" "g i" "h h"}}
+/* notes */
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(48px,6vw,80px)}
+.note{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg-2);min-width:0;transition:border-color .4s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.note:hover{border-color:var(--line-2);transform:translateY(-4px)}
+.note .im{aspect-ratio:4/3;overflow:hidden}
+.note .im img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.85);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.note:hover .im img{transform:scale(1.05)}
+.note .tx{padding:22px 22px 26px}
+.note .where{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);display:flex;gap:8px;align-items:center}
+.note h3{font-size:24px;margin-top:10px;letter-spacing:-.01em;line-height:1.2}
+.note p{color:var(--ink-2);font-size:15px;line-height:1.65;margin-top:10px}
+@media (max-width:900px){.notes{grid-template-columns:1fr}}
+
+/* minerva */
+.minerva{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:center}
+.minerva .logo{height:64px;width:auto;filter:brightness(0) invert(1);opacity:.95}
+.minerva h2{font-size:clamp(36px,4.6vw,64px);letter-spacing:-.025em;line-height:1.02;margin-top:26px}
+.minerva h2 em{font-style:italic;color:var(--ink-2)}
+.minerva .lead{margin-top:22px;color:var(--ink-2);line-height:1.75;max-width:34em}
+.facts{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.facts b{font-family:var(--display);font-weight:300;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.facts b sup{font-size:.5em;color:var(--accent-2);vertical-align:top}
+.facts span{color:var(--ink-2);font-size:15px;line-height:1.55}
+.facts .src{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);margin-left:6px;transition:color .3s}
+.facts .src:hover{color:var(--accent-2)}
+.collage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.collage figure{margin:0;border-radius:6px;overflow:hidden;position:relative;background:var(--bg-2);aspect-ratio:3/4}
+.collage figure:nth-child(2){transform:translateY(40px)}
+.collage figure:nth-child(3){transform:translateY(-10px)}
+.collage figure:nth-child(4){transform:translateY(30px)}
+.collage img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.85);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.collage figure:hover img{transform:scale(1.05)}
+.collage figcaption{position:absolute;left:12px;bottom:10px;right:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-shadow:0 1px 6px rgba(0,0,0,.9)}
+@media (max-width:900px){.minerva{grid-template-columns:1fr}.collage{margin-top:40px}}
+
+/* story */
+.story{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);position:relative}
+.story li{display:grid;grid-template-columns:minmax(0,120px) minmax(0,200px) minmax(0,1fr);gap:clamp(16px,3vw,48px);padding:30px 0;border-bottom:1px solid var(--line);position:relative;align-items:center;transition:padding-left .4s cubic-bezier(.2,.7,.2,1)}
+.story li::before{content:"";position:absolute;left:calc(-1*var(--gutter));top:0;bottom:0;width:2px;background:var(--accent-2);transform:scaleY(0);transform-origin:top;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.story li:hover::before{transform:scaleY(1)}
+.story li:hover{padding-left:10px}
+.story .year{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.story .lg{display:flex;align-items:center;min-width:0}
+.story .lg img{height:28px;width:auto;max-width:170px;filter:brightness(0) invert(1);opacity:.9;object-fit:contain}
+.story .lg img.white{filter:none}
+.story .lg img.huya{height:34px}
+.story .lg .wm{font-family:var(--display);font-size:24px;letter-spacing:.01em;white-space:nowrap}
+.story .lg .wm b{font-weight:400}
+.story .tx{min-width:0}
+.story .tx b{font-weight:400;display:block;font-size:17px}
+.story .tx span{display:block;color:var(--ink-2);font-size:15px;line-height:1.65;margin-top:6px;max-width:52em}
+.story .tx strong{color:var(--ink);font-weight:400}
+.story li.current .year{color:var(--accent-2)}
+.follow{position:fixed;left:0;top:0;width:240px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;pointer-events:none;z-index:45;opacity:0;transform:translate(-50%,-50%) scale(.9) rotate(-4deg);box-shadow:0 30px 70px rgba(0,0,0,.6);background:var(--bg-2);will-change:transform}
+.follow img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+.follow img.show{opacity:1}
+.follow .lgcard{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(160deg,var(--bg-3),var(--bg));opacity:0;transition:opacity .3s;padding:24px}
+.follow .lgcard.show{opacity:1}
+.follow .lgcard img{position:static;width:auto;height:34px;max-width:170px;opacity:1;filter:brightness(0) invert(1)}
+.follow .lgcard .wm{font-family:var(--display);font-size:30px}
+.follow .lgcard .wm b{font-weight:400}
+@media (max-width:760px){
+  .story li{grid-template-columns:1fr;gap:10px;padding:24px 0}
+  .story li:hover{padding-left:0}
+  .follow{display:none}
+}
+
+/* videos */
+.videos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.vid{display:block;min-width:0}
+.vid .th{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg-2)}
+.vid .th img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.vid:hover .th img{transform:scale(1.05)}
+.vid .play{position:absolute;left:50%;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(12,11,10,.7);border:1px solid var(--line-2);backdrop-filter:blur(6px);display:grid;place-items:center;transform:translate(-50%,-50%) scale(.85);opacity:0;transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.vid:hover .play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.vid .play::after{content:"";border-left:14px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
+.vid h3{font-family:var(--body);font-weight:400;font-size:15px;line-height:1.45;margin-top:12px;letter-spacing:0;text-wrap:pretty}
+.vid .d{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+@media (max-width:1000px){.videos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.videos{grid-template-columns:1fr}}
+
+/* links */
+.links{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.links li{border-bottom:1px solid var(--line)}
+.links a,.links .soon{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,5fr) auto;align-items:center;gap:20px;padding:24px 0;transition:padding .35s cubic-bezier(.2,.7,.2,1)}
+.links a:hover{padding-left:16px}
+.links .name{font-family:var(--display);font-size:clamp(28px,3.6vw,44px);letter-spacing:-.02em;line-height:1.05}
+.links .handle{font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.04em;min-width:0;overflow-wrap:anywhere}
+.links .arrow{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ink);transition:background .3s,border-color .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.links a:hover .arrow{background:var(--accent);border-color:var(--accent);transform:rotate(-45deg)}
+.links .soon{color:var(--ink-3);cursor:default}
+.links .soon .name{color:var(--ink-3)}
+.links .soon .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--ink-3)}
+@media (max-width:600px){
+  .links a,.links .soon{grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:18px 0}
+  .links .handle{grid-column:1;grid-row:2}
+  .links .arrow,.links .tag{grid-row:1/3}
+}
+
+footer{border-top:1px solid var(--line);padding-block:clamp(48px,7vw,90px)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px}
+.sign{font-family:var(--display);font-style:italic;font-size:clamp(28px,4vw,52px);letter-spacing:-.015em;line-height:1.1}
+.sign::after{content:"";display:block;width:40px;height:2px;background:var(--accent-2);margin-top:16px}
+footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-3)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee .row{animation:none}
+  .hero h1 em::after{animation:none;transform:scaleX(1)}
+  .now-in .dot{animation:none}
+  *{transition-duration:.01ms!important}
+}
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Dexter <i>Fang</i></a>
+    <ul>
+      <li><a href="#work">What I do</a></li>
+      <li><a href="#life">How I live</a></li>
+      <li><a href="#minerva">Minerva</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#links">Find me</a></li>
+    </ul>
+    <div class="now-in"><span class="dot"></span>Now in Berlin <span class="flag">🇩🇪</span></div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow" data-rise>Student. Founder. 30+ countries so far.</div>
+        <h1 data-rise>Dexter <em>Fang</em></h1>
+        <p class="tagline" data-rise>Building businesses, thinking out loud, living in between.</p>
+        <p class="intro" data-rise>Hey, I'm Dexter. I'm a business student at Minerva University, and I'm also a founder. Minerva has no campus, so every semester the whole class moves to a new country. That's how I ended up living out of three suitcases, with a company to run in between classes and a camera to show the whole thing.</p>
+        <div class="hero-cta" data-rise>
+          <a class="pill primary" href="https://www.youtube.com/@dexter_fang" target="_blank" rel="noopener"><span>YouTube</span></a>
+          <a class="pill" href="https://www.instagram.com/dexterrrfang/" target="_blank" rel="noopener"><span>Instagram</span></a>
+          <a class="pill" href="https://www.linkedin.com/in/dexter-fang-781a57269/" target="_blank" rel="noopener"><span>LinkedIn</span></a>
+        </div>
+        <div class="stats" data-rise>
+          <div class="stat"><b><span data-count="30">30</span><sup>+</sup></b><span>countries</span></div>
+          <div class="stat"><b><span data-count="7">7</span></b><span>cities in 4 years</span></div>
+          <div class="stat"><b><span data-count="3">3</span></b><span>suitcases, total</span></div>
+          <div class="stat"><b>'27</b><span>Minerva class of</span></div>
+        </div>
+      </div>
+      <div class="deck" id="deck">
+        <div class="card"><img src="assets/dexter-hero.jpg" alt="Dexter in a black cap, looking off to the side"><div class="cap"><span>Somewhere in between</span><span>2026</span></div></div>
+        <div class="card"><img src="assets/life/bariloche-me.jpg" alt="Dexter in front of the lakes and mountains of Bariloche"><div class="cap"><span>Bariloche <span class="flag">🇦🇷</span></span><span>2025</span></div></div>
+        <div class="card"><img src="assets/life/seoul-dexter-neon.jpg" alt="Dexter standing under a neon sign that reads dexter"><div class="cap"><span>Seoul <span class="flag">🇰🇷</span></span><span>2026</span></div></div>
+        <div class="card"><img src="assets/life/sf-skyline-me.jpg" alt="Dexter on a San Francisco street with the skyline behind"><div class="cap"><span>San Francisco <span class="flag">🇺🇸</span></span><span>2025</span></div></div>
+        <div class="card"><img src="assets/life/seoul-stairs-me.jpg" alt="Dexter on a stairway in a Seoul neighbourhood"><div class="cap"><span>Seoul <span class="flag">🇰🇷</span></span><span>2025</span></div></div>
+        <div class="deck-hint">Move your mouse. Cards rotate on their own.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section id="work">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <h2 data-split>What do <em>I do?</em></h2>
+        <p>Three things take up most of my days. <strong>One company, one school, one camera.</strong> People tell me they don't belong together. I think that's exactly why it works.</p>
+      </div>
+      <div class="do">
+        <article data-rise>
+          <img class="bg" src="assets/build/meet-taipei-pitch.jpg" alt="Dexter on stage with a mic at Meet Taipei 2024">
+          <div class="top"><img class="logo raw" src="assets/logos/feinnr.png" alt="FEiNNR AI"><span class="role">Founder</span></div>
+          <div class="body">
+            <h3>I run a company <span>FEiNNR AI</span></h3>
+            <p>AI native marketing for global brands. We run overseas communities for <strong>Insta360</strong>, <strong>Bambu Lab</strong> and others. We started by shipping AI subscription apps, 2,000+ paying users and $30K+ in revenue, then moved into marketing because that's where AI actually changes the work.</p>
+          </div>
+        </article>
+        <article data-rise>
+          <img class="bg" src="assets/life/passports.jpg" alt="A circle of hands holding passports from many countries">
+          <div class="top"><img class="logo" src="assets/logos/minerva.svg" alt="Minerva University"><span class="role">Student</span></div>
+          <div class="body">
+            <h3>I go to school <span>Minerva University</span></h3>
+            <p>Business major, strategic finance. No campus, no lectures, seven cities in four years. Every class is a live seminar where everyone has to talk. It's the hardest school I've ever been in, and the only one I'd do again.</p>
+            <a class="more" href="#minerva">More on Minerva <i>&rarr;</i></a>
+          </div>
+        </article>
+        <article data-rise>
+          <img class="bg" src="assets/build/desk-mic.jpg" alt="Dexter at his desk with a microphone and two monitors">
+          <div class="top"><span class="wordmark"><b>YouTube</b></span><span class="role">@dexter_fang</span></div>
+          <div class="body">
+            <h3>I make videos <span>about all of it</span></h3>
+            <p>I'm new at this one. The channel shows what it actually looks like to build businesses while you're still in school. Business ideas, the things I build, what I'm learning about AI and marketing, and some life on the road. I don't know yet where it goes. Let's find out together.</p>
+            <a class="more" href="https://www.youtube.com/@dexter_fang" target="_blank" rel="noopener">Watch <i>&rarr;</i></a>
+          </div>
+        </article>
+      </div>
+      <div class="clients" data-rise>
+        <span class="lbl">Brands I work with</span>
+        <img class="insta" src="assets/logos/insta360.svg" alt="Insta360">
+        <img src="assets/logos/bambulab.svg" alt="Bambu Lab">
+        <span class="lbl">and others</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section id="life">
+    <div class="wrap sec" style="padding-bottom:0">
+      <div class="sec-head">
+        <h2 data-split>How do <em>I live?</em></h2>
+        <p>Minerva moves the whole class to a new city every semester. <strong>Four years, seven cities.</strong> Five done. Tokyo next, then back to San Francisco to graduate. Each one gets a few months, a new language to fail at, and a new set of friends to say goodbye to. I'm not a tourist in these places. I live there, and then I leave.</p>
+      </div>
+    </div>
+    <div class="cities-wrap" id="cities">
+      <div class="cities-track" id="citiesTrack">
+        <div class="city"><img src="assets/life/sf-skyline-me.jpg" alt="Dexter on a hill in San Francisco with the skyline behind him"><span class="n">01 · Year one</span><span class="fl flag">🇺🇸</span><div class="b"><h3>San Francisco</h3><div class="t">2023 to 2024</div><p>Where it started. First year of school, CES in Vegas, TechCrunch Disrupt, and more Warriors games than I should admit.</p></div></div>
+        <div class="city"><img src="assets/life/jiufen-lanterns.jpg" alt="Red lanterns on the hillside teahouses of Jiufen at dusk"><span class="n">02 · Fall 2024</span><span class="fl flag">🇹🇼</span><div class="b"><h3>Taipei</h3><div class="t">Sep to Dec 2024</div><p>Four months. We started a basketball team from nothing, I pitched at Meet Taipei, and the exit stamp on Dec 26 still gets me.</p></div></div>
+        <div class="city"><img src="assets/life/seoul-gwanghwamun.jpg" alt="Gwanghwamun gate lit up at night in Seoul"><span class="n">03 · Spring 2025</span><span class="fl flag">🇰🇷</span><div class="b"><h3>Seoul</h3><div class="t">Jan to May 2025</div><p>Snow in January, palaces at night, sunsets over the Han river, and a bar that happened to have my name on the wall.</p></div></div>
+        <div class="city"><img src="assets/life/bariloche-me.jpg" alt="Dexter in a blue hoodie in front of the lakes of Bariloche"><span class="n">04 · Year three</span><span class="fl flag">🇦🇷</span><div class="b"><h3>Buenos Aires</h3><div class="t">Sep 2025 to Apr 2026</div><p>Patagonia on the first road trip, Friendsgiving with the Argentine flag, Kendrick live, and the number one steak restaurant in the world.</p></div></div>
+        <div class="city"><img src="assets/life/berlin-checkpoint.jpg" alt="Dexter standing at Checkpoint Charlie in Berlin"><span class="n">05 · Fall 2026</span><span class="fl flag">🇩🇪</span><div class="b"><h3>Berlin</h3><div class="t">Right now</div><p>The Wall, Checkpoint Charlie, a bitcoin sign in a bar, and weekend trains to Budapest. This is where I'm writing this from.</p></div></div>
+        <div class="city next"><div class="q flag">🇯🇵</div><span class="n">06 · Spring 2027</span><span class="fl flag">🇯🇵</span><div class="b"><h3>Tokyo</h3><div class="t">Not there yet</div><p>Next semester. No photos yet, which is the honest version of this card.</p></div></div>
+        <div class="city"><img src="assets/life/sf-palace.jpg" alt="The Palace of Fine Arts in San Francisco at night"><span class="n">07 · 2027</span><span class="fl flag">🇺🇸</span><div class="b"><h3>San Francisco, again</h3><div class="t">Graduation</div><p>Back to where it started, for the last semester and the cap and gown. Four years, full circle.</p></div></div>
+        <div class="city-end"></div>
+      </div>
+    </div>
+
+    <div class="wrap" style="padding-top:clamp(64px,8vw,110px)">
+      <div class="sec-head" style="margin-bottom:28px">
+        <h2 data-split style="font-size:clamp(32px,4.4vw,60px)">30+ countries, <em>and counting</em></h2>
+        <p>School gives me the cities. Everything in between is weekends, breaks, and friends who say "come visit" and actually mean it. Hover to see where.</p>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="row" id="rowA"></div>
+    </div>
+    <div class="marquee">
+      <div class="row r" id="rowB"></div>
+    </div>
+    <div class="wrap">
+      <div class="flags" data-rise aria-label="Countries and regions">
+        <span class="flag" title="China">🇨🇳</span><span class="flag" title="United States">🇺🇸</span><span class="flag" title="Taiwan">🇹🇼</span><span class="flag" title="South Korea">🇰🇷</span><span class="flag" title="Argentina">🇦🇷</span><span class="flag" title="Germany">🇩🇪</span><span class="flag" title="Hungary">🇭🇺</span><span class="flag" title="Turkey">🇹🇷</span><span class="flag" title="Israel">🇮🇱</span><span class="flag" title="Hong Kong">🇭🇰</span><span class="flag" title="Philippines">🇵🇭</span><span class="flag" title="Singapore">🇸🇬</span>
+      </div>
+
+      <div class="moments" data-rise>
+        <figure class="ma"><img loading="lazy" src="assets/life/argentina-flag.jpg" alt="Dexter and a friend holding the Argentine flag" style="--pos:50% 40%"><figcaption><span class="flag">🇦🇷</span>Flag day</figcaption></figure>
+        <figure class="mb"><img loading="lazy" src="assets/life/beach-sunset-me.jpg" alt="Dexter on a beach at sunset in Hawaii" style="--pos:50% 45%"><figcaption><span class="flag">🇺🇸</span>Hawaii</figcaption></figure>
+        <figure class="mc"><img loading="lazy" src="assets/life/ba-piano.jpg" alt="Dexter playing piano in a winery cellar"><figcaption><span class="flag">🇦🇷</span>Winery piano</figcaption></figure>
+        <figure class="md"><img loading="lazy" src="assets/life/philippines-bar.jpg" alt="Dexter and a friend at a bamboo bar in the Philippines" style="--pos:50% 35%"><figcaption><span class="flag">🇵🇭</span>Bohol</figcaption></figure>
+        <figure class="me"><img loading="lazy" src="assets/life/basketball-team.jpg" alt="The Minerva basketball team in black jerseys" style="--pos:50% 22%"><figcaption><span class="flag">🇹🇼</span>The team we started</figcaption></figure>
+        <figure class="mf"><img loading="lazy" src="assets/life/taipei-minervan-shirt.jpg" alt="Dexter in a Minerva shirt with a friend at night" style="--pos:50% 30%"><figcaption><span class="flag">🇹🇼</span>Night market</figcaption></figure>
+        <figure class="mg"><img loading="lazy" src="assets/life/nba-allstar.jpg" alt="Dexter and a friend at the NBA All-Star 2025 sign" style="--pos:50% 50%"><figcaption><span class="flag">🇺🇸</span>All-Star weekend</figcaption></figure>
+        <figure class="mh"><img loading="lazy" src="assets/life/friendsgiving-flag.jpg" alt="Friendsgiving 2025 group with the Argentine flag" style="--pos:50% 35%"><figcaption><span class="flag">🇦🇷</span>Friendsgiving</figcaption></figure>
+        <figure class="mi"><img loading="lazy" src="assets/life/ba-football.jpg" alt="The football team lined up on a pitch in Buenos Aires" style="--pos:50% 40%"><figcaption><span class="flag">🇦🇷</span>Sunday football</figcaption></figure>
+      </div>
+
+      <div class="notes">
+        <article class="note" data-rise>
+          <div class="im"><img src="assets/life/jerusalem-dome.jpg" alt="The Western Wall plaza with the Dome of the Rock behind it, Jerusalem"></div>
+          <div class="tx"><div class="where"><span class="flag">🇮🇱</span>Israel and the West Bank, May 2025</div><h3>The trip I still think about the most</h3><p>I was in a meeting at a café in Tel Aviv when the rocket sirens went off and the barista pulled me into the basement. Two days later, same thing in Jerusalem. Then I crossed into the West Bank. The conflict isn't something you read about there. It's on every wall, every checkpoint, every face. I came back shaken, and I still don't have a clean take on it. I don't think I'm supposed to.</p></div>
+        </article>
+        <article class="note" data-rise>
+          <div class="im"><img src="assets/life/taipei-stamp.jpg" alt="A Taiwan exit stamp dated December 26, 2024"></div>
+          <div class="tx"><div class="where"><span class="flag">🇹🇼</span>Taipei, December 2024</div><h3>The stamp that ends a semester</h3><p>Four months in Taipei, done. I took the best memories with me. I love this city and the people I met here. That's the strange part of this school. Every few months you fall for a place, and then you have to leave it.</p></div>
+        </article>
+        <article class="note" data-rise>
+          <div class="im"><img src="assets/life/budapest-chef.jpg" alt="A restaurant menu card in Budapest that lists Dexter as owner and chef"></div>
+          <div class="tx"><div class="where"><span class="flag">🇭🇺</span>Budapest, September 2026</div><h3>Apparently I'm a chef in Budapest</h3><p>Walked into a Hungarian restaurant and the menu said the owner and chef was named Dexter. Looks like I have a side business I didn't know about. Travel is mostly this. Small, dumb moments you'd never get at home.</p></div>
+        </article>
+      </div>
+    </div>
+    <div class="wrap" style="padding-top:clamp(64px,8vw,110px)"><div class="rule"></div></div>
+  </section>
+
+  <section id="minerva">
+    <div class="wrap sec">
+      <div class="minerva">
+        <div data-rise>
+          <img class="logo" src="assets/logos/minerva.svg" alt="Minerva University">
+          <h2>Why I went back to school <em>after seven years of work</em></h2>
+          <p class="lead">People asked me why. Honestly, I wanted to learn how to think properly, with people from everywhere, and Minerva was the only school where that's the whole design. No lecture halls. Every class is a small live seminar, and you get called on whether you're ready or not. Then the whole class moves to another country.</p>
+          <ul class="facts">
+            <li><b>#1</b><span>most innovative university in the world, five years in a row. WURI 2022 to 2026, with Stanford, MIT, Penn and Caltech in the top 10 behind it. <a class="src" href="https://www.minerva.edu/announcements/minerva-university-named-worlds-most-innovative-university-for-fifth-consecutive-year/" target="_blank" rel="noopener">source</a></span></li>
+            <li><b>#3</b><span>hardest college to get into in America, Niche 2026. Also #15 for business and top 3% for academics nationwide. <a class="src" href="https://www.minerva.edu/announcements/minerva-university-named-one-of-americas-best-colleges-in-2026-niche-rankings" target="_blank" rel="noopener">source</a></span></li>
+            <li><b>100<sup>+</sup></b><span>countries in the student body. My classmates are from everywhere, which is the whole point.</span></li>
+            <li><b>7</b><span>cities in four years, one semester each. No campus, no dorm you keep. Your classmates become your family by necessity.</span></li>
+            <li><b>0</b><span>lectures. Every class is a live seminar, and the professor can see exactly how much you talk.</span></li>
+          </ul>
+        </div>
+        <div class="collage" data-rise>
+          <figure><img src="assets/life/basketball-president.jpg" alt="The Minerva basketball team with the university president" style="object-position:50% 62%"><figcaption>Minerva basketball, with President Magee</figcaption></figure>
+          <figure><img src="assets/life/pearl-harbor-minervans.jpg" alt="Two groups of Minerva students meeting at Pearl Harbor"><figcaption>Two Minerva groups meet at Pearl Harbor</figcaption></figure>
+          <figure><img src="assets/life/worlds-your-campus.jpg" alt="Dexter in front of a sign that reads The world's your campus"><figcaption>The world's your campus</figcaption></figure>
+          <figure><img src="assets/life/passports-2.jpg" alt="Passports from many countries held together in a circle"><figcaption>When global citizens travel</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section id="story">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <h2 data-split>How did <em>I get here?</em></h2>
+        <p>Before school I spent seven years building things inside companies and then on my own. Most of it worked. One thing didn't. <strong>Hover each line to see it.</strong></p>
+      </div>
+      <ol class="story" id="storyList">
+        <li data-img="assets/build/blockchain-summit-2018.jpg">
+          <div class="year">2018</div>
+          <div class="lg"><img class="huya" src="assets/logos/huya.svg" alt="HUYA"></div>
+          <div class="tx"><b>HUYA. League of Legends esports and live streaming.</b><span>My first job out of school. Esports was exploding in China and I was in the middle of it. Then JOYY, the US listed parent company, took me in as a management trainee.</span></div>
+        </li>
+        <li data-logo="1">
+          <div class="year">2018 to 2020</div>
+          <div class="lg"><img src="assets/logos/joyy.png" alt="JOYY"></div>
+          <div class="tx"><b>Product manager, then product director.</b><span>My team built gaming utility apps for Android, Lulubox and Flashdog. They grew to <strong>30M+ users</strong>, with <strong>1.5M+ people</strong> opening them every day. I got promoted after a year. Same products, same scope. The title just caught up.</span></div>
+        </li>
+        <li data-logo="1">
+          <div class="year">2020 to 2022</div>
+          <div class="lg"><img src="assets/logos/shopline.svg" alt="SHOPLINE"></div>
+          <div class="tx"><b>SHOPLINE. Three jobs in two years.</b><span>After JOYY acquired SHOPLINE, I was sent over to build new business lines. First, direct access to China's apparel supply chain for US sellers, <strong>100+ clients and $2.3M a year</strong>. Then China marketing. Then I moved to Singapore to launch social and livestream commerce, <strong>zero to 100+ clients and $15M+ annual GMV</strong> in nine months.</span></div>
+        </li>
+        <li data-img="assets/build/uocan-prototype.jpg">
+          <div class="year">2023 to 2025</div>
+          <div class="lg"><img class="white" src="assets/logos/uocan.png" alt="Uocan"></div>
+          <div class="tx"><b>Uocan. Co-founder, San Francisco Bay Area.</b><span>We designed a smart trash can from scratch. Our own patent, an <strong>iF Design Award</strong>, <strong>10,000+ units sold</strong>, about $450K in sales. Then supply chain cash pressure got too heavy and we shut it down. It hurt. It also taught me more than anything that worked.</span></div>
+        </li>
+        <li data-img="assets/life/sf-first-days.jpg">
+          <div class="year">2023</div>
+          <div class="lg"><img src="assets/logos/minerva.svg" alt="Minerva University" style="height:40px"></div>
+          <div class="tx"><b>Went back to school. Minerva University, class of 2027.</b><span>Started in San Francisco while still running Uocan. Business major, strategic finance. Seven cities, four years.</span></div>
+        </li>
+        <li class="current" data-img="assets/build/meet-taipei-pitch-2.jpg">
+          <div class="year">2025 to now</div>
+          <div class="lg"><img class="white" src="assets/logos/feinnr.png" alt="FEiNNR AI" style="height:22px"></div>
+          <div class="tx"><b>FEiNNR AI. Founder and CEO.</b><span>AI native marketing for global brands. Clients include Insta360, Bambu Lab and others. Also where the YouTube channel comes from. I know, student and founder is a weird combination. That's exactly what the channel is about.</span></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <div class="follow" id="follow" aria-hidden="true"></div>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section id="videos">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <h2 data-split>Latest <em>videos</em></h2>
+        <p>I'm a few months into this. If you watch one and something's wrong, tell me. That's the whole point of doing it in public.</p>
+      </div>
+      <div class="videos" id="videos-grid" data-fallback="1">
+        <a class="vid" data-rise href="https://www.youtube.com/watch?v=u9gY53uiMm4" target="_blank" rel="noopener"><div class="th"><img src="assets/yt/u9gY53uiMm4.jpg" alt=""><span class="play"></span></div><h3>You Made $10K With Your AI App. You Keep $4,250.</h3><div class="d">Jul 2026</div></a>
+        <a class="vid" data-rise href="https://www.youtube.com/watch?v=hxgqP0cXyoM" target="_blank" rel="noopener"><div class="th"><img src="assets/yt/hxgqP0cXyoM.jpg" alt=""><span class="play"></span></div><h3>The Only App Marketing That Works When Nobody Knows You</h3><div class="d">Jul 2026</div></a>
+        <a class="vid" data-rise href="https://www.youtube.com/watch?v=ynqTRwKCIik" target="_blank" rel="noopener"><div class="th"><img src="assets/yt/ynqTRwKCIik.jpg" alt=""><span class="play"></span></div><h3>The $600 Step Every Vibe Coding Tutorial Skips</h3><div class="d">Jul 2026</div></a>
+        <a class="vid" data-rise href="https://www.youtube.com/watch?v=9jXs8TwQdH0" target="_blank" rel="noopener"><div class="th"><img src="assets/yt/9jXs8TwQdH0.jpg" alt=""><span class="play"></span></div><h3>Why Your Vibe-Coded App Makes $0 (and Theirs Makes $10K/mo)</h3><div class="d">Jul 2026</div></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section id="links">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <h2 data-split>Where to <em>find me</em></h2>
+        <p>Videos live on YouTube. The day to day lives on Instagram. If you want to talk work, LinkedIn is the easiest place to reach me.</p>
+      </div>
+      <ul class="links">
+        <li><a href="https://www.youtube.com/@dexter_fang" target="_blank" rel="noopener"><span class="name">YouTube</span><span class="handle">youtube.com/@dexter_fang</span><span class="arrow" aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="https://www.instagram.com/dexterrrfang/" target="_blank" rel="noopener"><span class="name">Instagram</span><span class="handle">instagram.com/dexterrrfang</span><span class="arrow" aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="https://www.linkedin.com/in/dexter-fang-781a57269/" target="_blank" rel="noopener"><span class="name">LinkedIn</span><span class="handle">linkedin.com/in/dexter-fang</span><span class="arrow" aria-hidden="true">&rarr;</span></a></li>
+        <!-- TODO Dexter: replace each .soon block with the <a> pattern above once the link is ready -->
+        <li><div class="soon"><span class="name">TikTok</span><span class="handle">link coming</span><span class="tag">Soon</span></div></li>
+        <li><div class="soon"><span class="name">X</span><span class="handle">link coming</span><span class="tag">Soon</span></div></li>
+        <li><div class="soon"><span class="name">抖音</span><span class="handle">Douyin, link coming</span><span class="tag">Soon</span></div></li>
+        <li><div class="soon"><span class="name">小红书</span><span class="handle">Xiaohongshu, link coming</span><span class="tag">Soon</span></div></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sign">Still building.<br>See you in the next one.</div>
+    <small>&copy; 2026 Dexter Fang · Berlin, for now</small>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = typeof gsap !== 'undefined';
+
+  /* marquee rows */
+  var A=[['budapest-parliament','🇭🇺','Budapest'],['jerusalem-dome','🇮🇱','Jerusalem'],['istanbul-mosque','🇹🇷','Istanbul'],['seoul-pagoda','🇰🇷','Seoul'],['bariloche-lake','🇦🇷','Bariloche'],['lamma-island','🇭🇰','Hong Kong'],['philippines-river','🇵🇭','Bohol'],['sf-palace','🇺🇸','San Francisco'],['taipei-cks','🇹🇼','Taipei'],['harbin-confucius','🇨🇳','Harbin'],['berlin-tv-tower','🇩🇪','Berlin'],['jaffa','🇮🇱','Jaffa'],['seoul-snow','🇰🇷','Seoul'],['ba-rainbow','🇦🇷','Buenos Aires'],['jerusalem-market','🇮🇱','Old City, Jerusalem'],['budapest-fountain','🇭🇺','Budapest'],['taipei-cks-statue','🇹🇼','Taipei'],['bariloche-carriage','🇦🇷','Bariloche'],['seoul-statue','🇰🇷','Gwanghwamun'],['berlin-street','🇩🇪','Berlin']];
+  var B=[['budapest-bridge','🇭🇺','Budapest'],['tel-aviv-beach','🇮🇱','Tel Aviv'],['istanbul-waterfront','🇹🇷','Istanbul'],['seoul-han-sunset','🇰🇷','Han River'],['bariloche-sunset','🇦🇷','Patagonia'],['hk-wings','🇭🇰','Hong Kong'],['philippines-atv','🇵🇭','Philippines'],['beach-sunset-me','🇺🇸','Hawaii'],['jiufen','🇹🇼','Jiufen'],['harbin-food','🇨🇳','Harbin'],['camino-7-lagos','🇦🇷','Camino de los 7 Lagos'],['busan-street','🇰🇷','Busan'],['sf-coit','🇺🇸','San Francisco'],['budapest-basilica','🇭🇺','Budapest'],['jerusalem-gate','🇮🇱','Jerusalem'],['tel-aviv-mural','🇮🇱','Tel Aviv'],['hawaii-luau','🇺🇸','Hawaii'],['patagonia-sign','🇦🇷','Patagonia'],['seoul-namsan','🇰🇷','Seoul'],['ba-concert','🇦🇷','Buenos Aires']];
+  function fill(id,list){var el=document.getElementById(id);if(!el)return;var h='';list.concat(list).forEach(function(x){h+='<div class="ph"><img loading="lazy" src="assets/life/'+x[0]+'.jpg" alt="'+x[2]+'"><div class="c"><span class="flag">'+x[1]+'</span>'+x[2]+'</div></div>'});el.innerHTML=h}
+  fill('rowA',A);fill('rowB',B);
+
+  /* latest videos: data/videos.json is refreshed by scripts/fetch_videos.py (GitHub Action), page falls back to the embedded four */
+  (function(){
+    var grid=document.getElementById('videos-grid'); if(!grid||!window.fetch) return;
+    fetch('data/videos.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(!d||!d.videos||!d.videos.length) return;
+      var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      grid.innerHTML=d.videos.slice(0,4).map(function(v){var dt=new Date(v.published); var th=v.thumb_local||v.thumb; return '<a class="vid" href="https://www.youtube.com/watch?v='+v.id+'" target="_blank" rel="noopener"><div class="th"><img src="'+th+'" alt=""><span class="play"></span></div><h3>'+v.title.replace(/</g,'&lt;')+'</h3><div class="d">'+m[dt.getMonth()]+' '+dt.getFullYear()+'</div></a>'}).join('');
+    }).catch(function(){});
+  })();
+
+  /* nav */
+  var nav=document.getElementById('nav');
+  function onS(){nav.classList.toggle('on',window.scrollY>24)} onS(); window.addEventListener('scroll',onS,{passive:true});
+
+  /* deck: auto rotate + mouse parallax */
+  var deck=document.getElementById('deck');
+  var rest=[[0,0,1],[-5,-6,.96],[5,6,.92],[-9,-10,.88],[9,10,.84]];
+  function layout(anim){
+    var cards=deck.querySelectorAll('.card');
+    cards.forEach(function(c,i){
+      var r=rest[i]||rest[rest.length-1];
+      c.style.zIndex=10-i;
+      if(hasGsap&&anim&&!reduce){gsap.to(c,{rotate:r[0],xPercent:r[1],scale:r[2],duration:.9,ease:'power3.out'})}
+      else{c.style.transform='rotate('+r[0]+'deg) translateX('+r[1]+'%) scale('+r[2]+')'}
+    });
+  }
+  layout(false);
+  var timer;
+  function cycle(){
+    var first=deck.querySelector('.card');
+    if(hasGsap&&!reduce){
+      gsap.to(first,{xPercent:60,rotate:12,opacity:0,duration:.6,ease:'power2.in',onComplete:function(){
+        deck.appendChild(first); gsap.set(first,{xPercent:0,rotate:0,opacity:1}); layout(true);
+      }});
+    } else { deck.appendChild(first); layout(false); }
+  }
+  if(!reduce){ timer=setInterval(cycle,4200); }
+  deck.addEventListener('click',function(){ clearInterval(timer); cycle(); if(!reduce) timer=setInterval(cycle,4200); });
+  if(window.matchMedia('(pointer:fine)').matches&&!reduce){
+    var hero=document.querySelector('.hero');
+    hero.addEventListener('mousemove',function(e){
+      var r=hero.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      if(hasGsap){gsap.to(deck,{rotateY:x*10,rotateX:-y*8,duration:.8,ease:'power2.out'})}
+    });
+    hero.addEventListener('mouseleave',function(){ if(hasGsap) gsap.to(deck,{rotateY:0,rotateX:0,duration:1}); });
+  }
+
+  /* cursor follower on the timeline */
+  var follow=document.getElementById('follow'), list=document.getElementById('storyList');
+  if(follow&&list&&window.matchMedia('(pointer:fine)').matches){
+    var imgs={}; list.querySelectorAll('li').forEach(function(li,i){var s=li.dataset.img; if(s&&!imgs[s]){var im=document.createElement('img'); im.src=s; im.alt=''; follow.appendChild(im); imgs[s]=im;} else if(!s){var k='logo'+i; li.dataset.img=k; var d=document.createElement('div'); d.className='lgcard'; d.innerHTML=li.querySelector('.lg').innerHTML; follow.appendChild(d); imgs[k]=d;}});
+    var tx=0,ty=0,cx=0,cy=0,vis=false;
+    document.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY});
+    list.addEventListener('mouseover',function(e){var li=e.target.closest('li'); if(!li) return; var s=li.dataset.img; Object.keys(imgs).forEach(function(k){imgs[k].classList.toggle('show',k===s)}); vis=true;});
+    list.addEventListener('mouseleave',function(){vis=false});
+    (function loop(){ cx+=(tx-cx)*.12; cy+=(ty-cy)*.12; follow.style.transform='translate('+(cx+28)+'px,'+(cy-120)+'px) rotate('+((tx-cx)*.05)+'deg) scale('+(vis?1:.9)+')'; follow.style.opacity=vis?1:0; requestAnimationFrame(loop) })();
+  }
+
+  if(!hasGsap||reduce) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* split headings */
+  document.querySelectorAll('[data-split]').forEach(function(h){
+    var html=h.innerHTML; var parts=html.split(/(<em>.*?<\/em>|\s+)/).filter(Boolean);
+    h.innerHTML=parts.map(function(p){ if(/^\s+$/.test(p)) return ' '; if(p.indexOf('<em>')===0){var inner=p.replace(/<\/?em>/g,''); return inner.split(' ').map(function(w){return '<em><span class="w"><span>'+w+'</span></span></em>'}).join(' ');} return '<span class="w"><span>'+p+'</span></span>'; }).join('');
+    gsap.from(h.querySelectorAll('.w>span'),{yPercent:110,duration:1,ease:'power4.out',stagger:.06,scrollTrigger:{trigger:h,start:'top 85%'},onComplete:function(){h.querySelectorAll('.w').forEach(function(w){w.classList.add('open')})}});
+  });
+
+  /* hero entrance */
+  gsap.from('.hero [data-rise]',{y:28,opacity:0,duration:1,ease:'power3.out',stagger:.12,delay:.1});
+  gsap.from('#deck .card',{y:80,opacity:0,rotate:0,duration:1.2,ease:'power3.out',stagger:.08,delay:.3,onComplete:function(){layout(true)}});
+
+  /* generic rises */
+  document.querySelectorAll('section:not(.hero) [data-rise]').forEach(function(el){
+    gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+
+  /* counters */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var end=+el.dataset.count, o={v:0};
+    gsap.to(o,{v:end,duration:1.6,ease:'power2.out',delay:.6,onUpdate:function(){el.textContent=Math.round(o.v)}});
+  });
+
+  /* pinned horizontal cities on desktop */
+  ScrollTrigger.matchMedia({
+    '(min-width: 901px)': function(){
+      var track=document.getElementById('citiesTrack'), wrap=document.getElementById('cities');
+      function dist(){return track.scrollWidth-window.innerWidth}
+      gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:wrap,start:'center center',end:function(){return '+='+dist()},pin:true,scrub:.6,invalidateOnRefresh:true,anticipatePin:1}});
+      gsap.from('.city',{y:60,opacity:0,duration:1,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:wrap,start:'top 80%'}});
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
