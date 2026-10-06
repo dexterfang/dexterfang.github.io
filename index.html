@@ -7,7 +7,12 @@
 <meta property="og:title" content="Dexter Fang">
 <meta property="og:description" content="Building businesses, thinking out loud, living in between.">
 <meta property="og:image" content="assets/dexter-hero.jpg">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="shortcut icon" href="/favicon.ico">
 <title>Dexter Fang</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
@@ -135,8 +140,17 @@ section{position:relative}
 
 
 /* how I live: cities */
-.cities-wrap{position:relative;overflow:hidden}
-.cities-track{display:flex;gap:18px;will-change:transform;padding-left:var(--gutter)}
+.cities-wrap{position:relative}
+.cities-track{display:flex;gap:18px;padding-left:var(--gutter);padding-right:var(--gutter);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.cities-track::-webkit-scrollbar{display:none}
+.cities-track.drag{cursor:grabbing;scroll-snap-type:none}
+.cities-track .city{scroll-snap-align:start}
+.edge{position:absolute;right:0;top:0;bottom:0;width:clamp(90px,12vw,160px);background:linear-gradient(90deg,rgba(12,11,10,0),rgba(12,11,10,.85));display:flex;align-items:center;justify-content:center;pointer-events:none;transition:opacity .5s;z-index:3}
+.edge.off{opacity:0}
+.edge button{pointer-events:auto;width:64px;height:64px;border-radius:50%;background:var(--accent);border:0;color:var(--ink);font-size:26px;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 0 rgba(224,74,48,.55);animation:ring 1.8s ease-out infinite;transition:transform .3s}
+.edge button:hover{transform:scale(1.08)}
+.edge button i{display:block;font-style:normal;animation:nudge 1.2s ease-in-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(224,74,48,.6)}100%{box-shadow:0 0 0 22px rgba(224,74,48,0)}}
 .city{flex:0 0 clamp(300px,34vw,460px);aspect-ratio:3/4;border-radius:8px;overflow:hidden;position:relative;background:var(--bg-2);isolation:isolate}
 .city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);z-index:0}
 .city:hover img{transform:scale(1.06)}
@@ -152,12 +166,28 @@ section{position:relative}
 .city.next h3{color:var(--ink-2)}
 .city.next .q{position:absolute;inset:0;display:grid;place-items:center;font-size:150px;opacity:.18;filter:grayscale(1);z-index:0}
 .city-end{flex:0 0 var(--gutter)}
-@media (max-width:900px){
-  .cities-track{overflow-x:auto;scroll-snap-type:x mandatory;padding-right:var(--gutter);padding-bottom:12px;scrollbar-width:none}
   .cities-track::-webkit-scrollbar{display:none}
   .city{scroll-snap-align:start;flex-basis:min(78vw,380px)}
 }
 
+/* cities controls */
+.cities-ui{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.hint{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);transition:opacity .5s}
+.hint.off{opacity:0}
+.hint-t{display:none}.hint-d{display:inline}
+.hint-arrow{width:34px;height:1px;background:var(--accent-2);position:relative;animation:nudge 1.6s ease-in-out infinite}
+.hint-arrow::after{content:"";position:absolute;right:-1px;top:-4px;width:8px;height:8px;border-top:1px solid var(--accent-2);border-right:1px solid var(--accent-2);transform:rotate(45deg)}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+.cities-nav{display:flex;align-items:center;gap:14px}
+.cities-nav .count{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.cities-nav .count b{font-weight:400;color:var(--ink)}
+.dots{display:flex;gap:6px}
+.dots i{display:block;width:18px;height:2px;background:var(--line-2);border-radius:1px;transition:background .3s,width .3s}
+.dots i.on{background:var(--accent-2);width:28px}
+.cbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center;transition:background .3s,border-color .3s,transform .3s}
+.cbtn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+.cbtn:disabled{opacity:.3;cursor:default;transform:none;background:transparent;border-color:var(--line-2)}
+@media (max-width:900px){.hint-t{display:inline}.hint-d{display:none}.dots{display:none}.edge{width:70px}.edge button{width:52px;height:52px;font-size:22px}}
 /* marquee */
 .marquee{overflow:hidden;margin-top:18px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee .row{display:flex;gap:14px;width:max-content;animation:scrollL 70s linear infinite}
@@ -391,6 +421,17 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
         <p>Minerva moves the whole class to a new city every semester. <strong>Four years, seven cities.</strong> Five done. Tokyo next, then back to San Francisco to graduate. Each one gets a few months, a new language to fail at, and a new set of friends to say goodbye to. I'm not a tourist in these places. I live there, and then I leave.</p>
       </div>
     </div>
+    <div class="wrap">
+      <div class="cities-ui" id="citiesUi">
+        <div class="hint"><span class="hint-t">Swipe, or just watch</span><span class="hint-d">Drag, use the arrows, or just watch</span><i class="hint-arrow" aria-hidden="true"></i></div>
+        <div class="cities-nav">
+          <span class="count"><b id="cityNow">1</b> / 7</span>
+          <div class="dots" id="cityDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <button class="cbtn" id="cityPrev" type="button" aria-label="Previous city">&larr;</button>
+          <button class="cbtn" id="cityNext" type="button" aria-label="Next city">&rarr;</button>
+        </div>
+      </div>
+    </div>
     <div class="cities-wrap" id="cities">
       <div class="cities-track" id="citiesTrack">
         <div class="city"><img src="assets/life/sf-skyline-me.jpg" alt="Dexter on a hill in San Francisco with the skyline behind him"><span class="n">01 · Year one</span><span class="fl flag">🇺🇸</span><div class="b"><h3>San Francisco</h3><div class="t">2023 to 2024</div><p>Where it started. First year of school, CES in Vegas, TechCrunch Disrupt, and more Warriors games than I should admit.</p></div></div>
@@ -400,8 +441,8 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
         <div class="city"><img src="assets/life/berlin-checkpoint.jpg" alt="Dexter standing at Checkpoint Charlie in Berlin"><span class="n">05 · Fall 2026</span><span class="fl flag">🇩🇪</span><div class="b"><h3>Berlin</h3><div class="t">Right now</div><p>The Wall, Checkpoint Charlie, a bitcoin sign in a bar, and weekend trains to Budapest. This is where I'm writing this from.</p></div></div>
         <div class="city next"><div class="q flag">🇯🇵</div><span class="n">06 · Spring 2027</span><span class="fl flag">🇯🇵</span><div class="b"><h3>Tokyo</h3><div class="t">Not there yet</div><p>Next semester. No photos yet, which is the honest version of this card.</p></div></div>
         <div class="city"><img src="assets/life/sf-palace.jpg" alt="The Palace of Fine Arts in San Francisco at night"><span class="n">07 · 2027</span><span class="fl flag">🇺🇸</span><div class="b"><h3>San Francisco, again</h3><div class="t">Graduation</div><p>Back to where it started, for the last semester and the cap and gown. Four years, full circle.</p></div></div>
-        <div class="city-end"></div>
       </div>
+      <div class="edge" id="cityEdge"><button type="button" id="cityEdgeBtn" aria-label="Next city"><i>&rarr;</i></button></div>
     </div>
 
     <div class="wrap" style="padding-top:clamp(64px,8vw,110px)">
@@ -625,6 +666,33 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
     hero.addEventListener('mouseleave',function(){ if(hasGsap) gsap.to(deck,{rotateY:0,rotateX:0,duration:1}); });
   }
 
+  /* cities: autoplay carousel, dots, arrows, big edge arrow; any touch hands control to the user */
+  (function(){
+    var track=document.getElementById('citiesTrack'); if(!track) return;
+    var cards=track.querySelectorAll('.city'), n=cards.length;
+    var now=document.getElementById('cityNow'), dots=document.querySelectorAll('#cityDots i'), prev=document.getElementById('cityPrev'), next=document.getElementById('cityNext'), hint=document.querySelector('#citiesUi .hint'), edge=document.getElementById('cityEdge'), edgeBtn=document.getElementById('cityEdgeBtn');
+    var idx=0, timer=null, userTook=false, inView=false, hover=false;
+    function step(){return cards[1].offsetLeft-cards[0].offsetLeft}
+    function paint(i){ idx=Math.max(0,Math.min(n-1,i)); now.textContent=idx+1; dots.forEach(function(d,k){d.classList.toggle('on',k===idx)}); prev.disabled=idx===0; next.disabled=idx===n-1; edge.classList.toggle('off',idx===n-1); }
+    function go(i,smooth){ i=Math.max(0,Math.min(n-1,i)); track.scrollTo({left:i*step(),behavior:(smooth===false||reduce)?'auto':'smooth'}); }
+    function stopAuto(){ userTook=true; if(timer){clearInterval(timer);timer=null;} if(hint) hint.classList.add('off'); }
+    function startAuto(){ if(userTook||reduce||timer) return; timer=setInterval(function(){ if(!inView||hover) return; go(idx===n-1?0:idx+1); },4000); }
+    track.addEventListener('scroll',function(){ paint(Math.round(track.scrollLeft/step())); },{passive:true});
+    prev.addEventListener('click',function(){ stopAuto(); go(idx-1) });
+    next.addEventListener('click',function(){ stopAuto(); go(idx+1) });
+    edgeBtn.addEventListener('click',function(){ stopAuto(); go(idx+1) });
+    ['touchstart','wheel','pointerdown','keydown'].forEach(function(ev){ track.addEventListener(ev,stopAuto,{passive:true}) });
+    /* drag to scroll with a mouse */
+    var down=false,sx=0,sl=0;
+    track.addEventListener('pointerdown',function(e){ if(e.pointerType!=='mouse') return; down=true; sx=e.clientX; sl=track.scrollLeft; track.classList.add('drag'); });
+    window.addEventListener('pointermove',function(e){ if(!down) return; track.scrollLeft=sl-(e.clientX-sx); });
+    window.addEventListener('pointerup',function(){ if(!down) return; down=false; track.classList.remove('drag'); go(Math.round(track.scrollLeft/step())); });
+    if(window.matchMedia('(hover: hover)').matches){ track.addEventListener('pointerenter',function(e){ if(e.pointerType==='mouse') hover=true }); track.addEventListener('pointerleave',function(e){ if(e.pointerType==='mouse') hover=false }); }
+    function check(){ var r=track.getBoundingClientRect(); inView=r.bottom>innerHeight*.15 && r.top<innerHeight*.85; if(inView) startAuto(); }
+    window.addEventListener('scroll',check,{passive:true}); window.addEventListener('resize',check); setTimeout(check,300);
+    paint(0);
+  })();
+
   if(!hasGsap||reduce) return;
   gsap.registerPlugin(ScrollTrigger);
 
@@ -650,15 +718,35 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
     gsap.to(o,{v:end,duration:1.6,ease:'power2.out',delay:.6,onUpdate:function(){el.textContent=Math.round(o.v)}});
   });
 
-  /* pinned horizontal cities on desktop */
-  ScrollTrigger.matchMedia({
-    '(min-width: 901px)': function(){
-      var track=document.getElementById('citiesTrack'), wrap=document.getElementById('cities');
-      function dist(){return track.scrollWidth-window.innerWidth}
-      gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:wrap,start:'center center',end:function(){return '+='+dist()},pin:true,scrub:.6,invalidateOnRefresh:true,anticipatePin:1}});
-      gsap.from('.city',{y:60,opacity:0,duration:1,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:wrap,start:'top 80%'}});
+  /* cities: dots, counter, arrows, swipe hint */
+  (function(){
+    var track=document.getElementById('citiesTrack'), cards=track?track.querySelectorAll('.city'):[], n=cards.length;
+    var now=document.getElementById('cityNow'), dots=document.querySelectorAll('#cityDots i'), prev=document.getElementById('cityPrev'), next=document.getElementById('cityNext'), hint=document.querySelector('#citiesUi .hint');
+    if(!track||!n) return;
+    var idx=0, hinted=false;
+    function paint(i){ idx=Math.max(0,Math.min(n-1,i)); now.textContent=idx+1; dots.forEach(function(d,k){d.classList.toggle('on',k===idx)}); prev.disabled=idx===0; next.disabled=idx===n-1; }
+    function hideHint(){ if(hint&&!hint.classList.contains('off')) hint.classList.add('off'); }
+    window.__cityGo=null;
+    var desktop=window.matchMedia('(min-width: 901px)').matches;
+    if(!desktop){
+      var step=function(){return cards[0].getBoundingClientRect().width+18};
+      track.addEventListener('scroll',function(){ paint(Math.round(track.scrollLeft/step())); hideHint(); },{passive:true});
+      prev.addEventListener('click',function(){ track.scrollTo({left:(idx-1)*step(),behavior:'smooth'}) });
+      next.addEventListener('click',function(){ track.scrollTo({left:(idx+1)*step(),behavior:'smooth'}) });
+      /* first time it comes into view: peek the next card, then settle back */
+      if('IntersectionObserver' in window && !reduce){
+        var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting&&!hinted){ hinted=true; io.disconnect(); setTimeout(function(){ if(track.scrollLeft>4) return; track.scrollTo({left:90,behavior:'smooth'}); setTimeout(function(){ track.scrollTo({left:0,behavior:'smooth'}) },650); },500); } }) },{threshold:.5});
+        io.observe(track);
+      }
+    } else {
+      window.__cityPaint=paint; window.__cityHide=hideHint;
+      prev.addEventListener('click',function(){ if(window.__cityGo) window.__cityGo(idx-1) });
+      next.addEventListener('click',function(){ if(window.__cityGo) window.__cityGo(idx+1) });
     }
-  });
+    paint(0);
+  })();
+
+  gsap.from('.city',{y:60,opacity:0,duration:1,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'#cities',start:'top 80%'}});
 })();
 </script>
 
