@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@dexterrrfang · Instagram</title>
+<meta name="robots" content="noindex">
+<style>
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 18px; padding: 24px; box-sizing: border-box;
+    background: #0d0c0b; color: #fff; text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .handle { font-size: 22px; font-weight: 700; letter-spacing: 0.2px; }
+  .hint { font-size: 14px; color: #9a9aa5; margin: 0; max-width: 320px; line-height: 1.5; }
+  a.btn {
+    display: inline-block; padding: 15px 36px; border-radius: 999px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff; font-size: 17px; font-weight: 600; text-decoration: none;
+  }
+  a.web { color: #9a9aa5; font-size: 13px; text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="handle">@dexterrrfang</div>
+  <p class="hint" id="hint">Opening Instagram…</p>
+  <a class="btn" id="openBtn" href="https://www.instagram.com/dexterrrfang/">Open in Instagram</a>
+  <a class="web" href="https://www.instagram.com/dexterrrfang/">Continue on web instead</a>
+
+<script>
+(function () {
+  var USERNAME = 'dexterrrfang';
+  var WEB_URL  = 'https://www.instagram.com/' + USERNAME + '/';
+  var IOS_URL  = 'instagram://user?username=' + USERNAME;
+  var ANDROID_URL =
+    'intent://instagram.com/_u/' + USERNAME + '/#Intent;' +
+    'package=com.instagram.android;scheme=https;' +
+    'S.browser_fallback_url=' + encodeURIComponent(WEB_URL) + ';end';
+
+  var ua = navigator.userAgent || '';
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  // Desktop: no app to open — go straight to the profile page.
+  if (!isAndroid && !isIOS) {
+    window.location.replace(WEB_URL);
+    return;
+  }
+
+  var appUrl = isAndroid ? ANDROID_URL : IOS_URL;
+
+  // The button carries the app link: a real user tap is allowed to open
+  // another app even in webviews that silently block automatic redirects.
+  document.getElementById('openBtn').setAttribute('href', appUrl);
+
+  var left = false;
+  var markLeft = function () { left = true; };
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) markLeft();
+  });
+  window.addEventListener('pagehide', markLeft);
+  window.addEventListener('blur', markLeft);
+
+  // Try the app automatically. If nothing happened after 1.8s the redirect
+  // was blocked (or the app is missing) — keep the user HERE with the tap
+  // button instead of dumping them on the logged-out mobile site.
+  window.location.href = appUrl;
+  setTimeout(function () {
+    if (!left && !document.hidden) {
+      document.getElementById('hint').innerHTML =
+        'Tap the button to open the app.<br>' +
+        'If it still doesn’t open, use the ⋯ menu → “Open in browser”.';
+    }
+  }, 1800);
+})();
+</script>
+</body>
+</html>
