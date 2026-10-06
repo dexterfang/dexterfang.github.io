@@ -118,8 +118,7 @@ section{position:relative}
 .do article::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,10,.15) 0%,rgba(12,11,10,.1) 40%,rgba(12,11,10,.93) 100%);z-index:1}
 .do article:hover img.bg{transform:scale(1.07)}
 .do .top{position:absolute;left:22px;right:22px;top:20px;z-index:2;display:flex;justify-content:space-between;align-items:center}
-.do .logo{height:26px;width:auto;filter:brightness(0) invert(1);opacity:.95}
-.do .logo.raw{filter:none;height:22px}
+.do .logo{height:30px;width:auto;filter:none;opacity:.95}
 .do .wordmark{font-family:var(--display);font-size:22px;letter-spacing:.02em}
 .do .wordmark b{font-weight:400}
 .do .role{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(12,11,10,.55);backdrop-filter:blur(8px);padding:7px 11px;border-radius:999px;border:1px solid var(--line)}
@@ -135,9 +134,9 @@ section{position:relative}
 @media (max-width:900px){.do{grid-template-columns:1fr}.do article{aspect-ratio:4/5;max-height:560px}}
 .clients{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(22px,4vw,56px);margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
 .clients .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.clients img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.75;transition:opacity .3s}
+.clients img{height:34px;width:auto;filter:none;opacity:.8;transition:opacity .3s}
 .clients img:hover{opacity:1}
-.clients img.insta{height:24px}
+
 
 /* how I live: cities */
 .cities-wrap{position:relative;overflow:hidden}
@@ -204,7 +203,7 @@ section{position:relative}
 
 /* minerva */
 .minerva{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:center}
-.minerva .logo{height:64px;width:auto;filter:brightness(0) invert(1);opacity:.95}
+.minerva .logo{height:52px;width:auto;filter:none;opacity:.95}
 .minerva h2{font-size:clamp(36px,4.6vw,64px);letter-spacing:-.025em;line-height:1.02;margin-top:26px}
 .minerva h2 em{font-style:italic;color:var(--ink-2)}
 .minerva .lead{margin-top:22px;color:var(--ink-2);line-height:1.75;max-width:34em}
@@ -233,9 +232,7 @@ section{position:relative}
 .story li:hover{padding-left:10px}
 .story .year{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .story .lg{display:flex;align-items:center;min-width:0}
-.story .lg img{height:28px;width:auto;max-width:170px;filter:brightness(0) invert(1);opacity:.9;object-fit:contain}
-.story .lg img.white{filter:none}
-.story .lg img.huya{height:34px}
+.story .lg img{height:48px;width:auto;max-width:100%;filter:none;opacity:.92;object-fit:contain;object-position:left center}
 .story .lg .wm{font-family:var(--display);font-size:24px;letter-spacing:.01em;white-space:nowrap}
 .story .lg .wm b{font-weight:400}
 .story .tx{min-width:0}
@@ -248,7 +245,7 @@ section{position:relative}
 .follow img.show{opacity:1}
 .follow .lgcard{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(160deg,var(--bg-3),var(--bg));opacity:0;transition:opacity .3s;padding:24px}
 .follow .lgcard.show{opacity:1}
-.follow .lgcard img{position:static;width:auto;height:34px;max-width:170px;opacity:1;filter:brightness(0) invert(1)}
+.follow .lgcard img{position:static;width:auto;height:48px;max-width:180px;opacity:1;filter:none}
 .follow .lgcard .wm{font-family:var(--display);font-size:30px}
 .follow .lgcard .wm b{font-weight:400}
 @media (max-width:760px){
@@ -362,7 +359,7 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
       <div class="do">
         <article data-rise>
           <img class="bg" src="assets/build/meet-taipei-pitch.jpg" alt="Dexter on stage with a mic at Meet Taipei 2024">
-          <div class="top"><img class="logo raw" src="assets/logos/feinnr.png" alt="FEiNNR AI"><span class="role">Founder</span></div>
+          <div class="top"><img class="logo" src="assets/logos/feinnr-w.png" alt="FEiNNR AI"><span class="role">Founder</span></div>
           <div class="body">
             <h3>I run a company <span>FEiNNR AI</span></h3>
             <p>AI native marketing for global brands. We run overseas communities for <strong>Insta360</strong>, <strong>Bambu Lab</strong> and others. We started by shipping AI subscription apps, 2,000+ paying users and $30K+ in revenue, then moved into marketing because that's where AI actually changes the work.</p>
@@ -370,7 +367,7 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
         </article>
         <article data-rise>
           <img class="bg" src="assets/life/passports.jpg" alt="A circle of hands holding passports from many countries">
-          <div class="top"><img class="logo" src="assets/logos/minerva.svg" alt="Minerva University"><span class="role">Student</span></div>
+          <div class="top"><img class="logo" src="assets/logos/minerva-w.png" alt="Minerva University"><span class="role">Student</span></div>
           <div class="body">
             <h3>I go to school <span>Minerva University</span></h3>
             <p>Business major, strategic finance. No campus, no lectures, seven cities in four years. Every class is a live seminar where everyone has to talk. It's the hardest school I've ever been in, and the only one I'd do again.</p>
@@ -389,8 +386,8 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
       </div>
       <div class="clients" data-rise>
         <span class="lbl">Brands I work with</span>
-        <img class="insta" src="assets/logos/insta360.svg" alt="Insta360">
-        <img src="assets/logos/bambulab.svg" alt="Bambu Lab">
+        <img src="assets/logos/insta360-w.png" alt="Insta360">
+        <img src="assets/logos/bambulab-w.png" alt="Bambu Lab">
         <span class="lbl">and others</span>
       </div>
     </div>
@@ -469,7 +466,7 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
     <div class="wrap sec">
       <div class="minerva">
         <div data-rise>
-          <img class="logo" src="assets/logos/minerva.svg" alt="Minerva University">
+          <img class="logo" src="assets/logos/minerva-w.png" alt="Minerva University">
           <h2>Why I went back to school <em>after seven years of work</em></h2>
           <p class="lead">People asked me why. Honestly, I wanted to learn how to think properly, with people from everywhere, and Minerva was the only school where that's the whole design. No lecture halls. Every class is a small live seminar, and you get called on whether you're ready or not. Then the whole class moves to another country.</p>
           <ul class="facts">
@@ -501,32 +498,32 @@ footer small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:v
       <ol class="story" id="storyList">
         <li data-img="assets/build/blockchain-summit-2018.jpg">
           <div class="year">2018</div>
-          <div class="lg"><img class="huya" src="assets/logos/huya.svg" alt="HUYA"></div>
+          <div class="lg"><img src="assets/logos/huya-w.png" alt="HUYA"></div>
           <div class="tx"><b>HUYA. League of Legends esports and live streaming.</b><span>My first job out of school. Esports was exploding in China and I was in the middle of it. Then JOYY, the US listed parent company, took me in as a management trainee.</span></div>
         </li>
         <li data-logo="1">
           <div class="year">2018 to 2020</div>
-          <div class="lg"><img src="assets/logos/joyy.png" alt="JOYY"></div>
+          <div class="lg"><img src="assets/logos/joyy-w.png" alt="JOYY"></div>
           <div class="tx"><b>Product manager, then product director.</b><span>My team built gaming utility apps for Android, Lulubox and Flashdog. They grew to <strong>30M+ users</strong>, with <strong>1.5M+ people</strong> opening them every day. I got promoted after a year. Same products, same scope. The title just caught up.</span></div>
         </li>
         <li data-logo="1">
           <div class="year">2020 to 2022</div>
-          <div class="lg"><img src="assets/logos/shopline.svg" alt="SHOPLINE"></div>
+          <div class="lg"><img src="assets/logos/shopline-w.png" alt="SHOPLINE"></div>
           <div class="tx"><b>SHOPLINE. Three jobs in two years.</b><span>After JOYY acquired SHOPLINE, I was sent over to build new business lines. First, direct access to China's apparel supply chain for US sellers, <strong>100+ clients and $2.3M a year</strong>. Then China marketing. Then I moved to Singapore to launch social and livestream commerce, <strong>zero to 100+ clients and $15M+ annual GMV</strong> in nine months.</span></div>
         </li>
         <li data-img="assets/build/uocan-prototype.jpg">
           <div class="year">2023 to 2025</div>
-          <div class="lg"><img class="white" src="assets/logos/uocan.png" alt="Uocan"></div>
+          <div class="lg"><img src="assets/logos/uocan-w.png" alt="Uocan"></div>
           <div class="tx"><b>Uocan. Co-founder, San Francisco Bay Area.</b><span>We designed a smart trash can from scratch. Our own patent, an <strong>iF Design Award</strong>, <strong>10,000+ units sold</strong>, about $450K in sales. Then supply chain cash pressure got too heavy and we shut it down. It hurt. It also taught me more than anything that worked.</span></div>
         </li>
         <li data-img="assets/life/sf-first-days.jpg">
           <div class="year">2023</div>
-          <div class="lg"><img src="assets/logos/minerva.svg" alt="Minerva University" style="height:40px"></div>
+          <div class="lg"><img src="assets/logos/minerva-w.png" alt="Minerva University"></div>
           <div class="tx"><b>Went back to school. Minerva University, class of 2027.</b><span>Started in San Francisco while still running Uocan. Business major, strategic finance. Seven cities, four years.</span></div>
         </li>
         <li class="current" data-img="assets/build/meet-taipei-pitch-2.jpg">
           <div class="year">2025 to now</div>
-          <div class="lg"><img class="white" src="assets/logos/feinnr.png" alt="FEiNNR AI" style="height:22px"></div>
+          <div class="lg"><img src="assets/logos/feinnr-w.png" alt="FEiNNR AI"></div>
           <div class="tx"><b>FEiNNR AI. Founder and CEO.</b><span>AI native marketing for global brands. Clients include Insta360, Bambu Lab and others. Also where the YouTube channel comes from. I know, student and founder is a weird combination. That's exactly what the channel is about.</span></div>
         </li>
       </ol>
